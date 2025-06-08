@@ -9,6 +9,12 @@ jobs:
       matrix:
         v: [12, 14, 16]
         hello-world: [ubuntu-latest, windows-latest]
+        iclude:
+          - v: 22
+            hello-world: ubuntu-latest
+        exclude:
+          - v: 12
+            hello-world: windows-latest
     runs-on: ${{matrix.hello-world}}
     steps:
       - name: Get code
