@@ -16,7 +16,7 @@ jobs:
       - name: Download artifact
         uses: actions/download-artifact@v4
         with:
-          name: ${{  inputs.artifactName  }}
+          name: ${{  inputs.artifactname  }}
       - name: List files
         run: ls -la
       - name: Output information
