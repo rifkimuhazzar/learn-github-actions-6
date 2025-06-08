@@ -75,7 +75,7 @@ jobs:
     needs: build
     uses: ./.github/workflows/reusable.yml
     with:
-      artifactName: dist-files
+      nama-artefaK: dist-files
 
   report:
     needs: [lint, deploy]

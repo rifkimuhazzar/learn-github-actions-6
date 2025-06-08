@@ -3,7 +3,7 @@ name: Reusable Deploy Workflow
 on:
   workflow_call:
     inputs:
-      artifactName:
+      nama-artefak:
         description: The name of the deployed artifact
         required: false
         default: dist
@@ -16,7 +16,7 @@ jobs:
       - name: Download artifact
         uses: actions/download-artifact@v4
         with:
-          name: ${{  inputs.artifactname  }}
+          name: ${{  inputs.nama-artefak  }}
       - name: List files
         run: ls -la
       - name: Output information
