@@ -73,7 +73,7 @@ jobs:
 
   deploy:
     needs: build
-    uses: ./.github/workflows/reusable.yml@main
+    uses: ./.github/workflows/reusable.yml
     with:
       artifactName: dist-files
 
