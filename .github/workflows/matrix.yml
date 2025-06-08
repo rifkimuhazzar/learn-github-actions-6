@@ -9,7 +9,7 @@ jobs:
       matrix:
         v: [12, 14, 16]
         hello-world: [ubuntu-latest, windows-latest]
-        iclude:
+        include:
           - v: 22
             hello-world: ubuntu-latest
         exclude:
