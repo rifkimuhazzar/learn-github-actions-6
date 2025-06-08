@@ -76,6 +76,15 @@ jobs:
     uses: ./.github/workflows/reusable.yml
     with:
       nama-artefak: dist-files
+    # secrets:
+    #   nama-secret: ${{ secrets.ini-secretnya }}
+
+  print-deploy-result:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print deploy output
+        run: echo "${{ needs.deploy.outputs.nama-hasil }}"
 
   report:
     needs: [lint, deploy]
