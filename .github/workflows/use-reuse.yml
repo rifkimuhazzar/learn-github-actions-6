@@ -73,7 +73,7 @@ jobs:
 
   deploy:
     needs: build
-    uses: ./.github/workflows/reuse.yml
+    uses: ./reuseable.yml
 
   report:
     needs: [lint, deploy]
