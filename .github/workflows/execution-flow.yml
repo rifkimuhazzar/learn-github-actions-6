@@ -41,7 +41,7 @@ jobs:
         id: test-code
         run: npm run test
       - name: Upload test report
-        if: failure() && steps.test-code.outcome == 'failure'
+        if: steps.test-code.outcome == 'failure'
         uses: actions/upload-artifact@v4
         with:
           name: test-report
@@ -92,4 +92,4 @@ jobs:
       - name: Output information
         run: |
           echo "Something went wrong"
-          echo "${{ toJSON(github) }}"
+          echo ${{ toJSON(github) }}
