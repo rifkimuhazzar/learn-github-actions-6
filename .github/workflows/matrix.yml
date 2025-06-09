@@ -4,25 +4,25 @@ on: push
 
 jobs:
   build:
+    runs-on: ${{matrix.sistem-operasi}}
     continue-on-error: true
     strategy:
       matrix:
-        v: [12, 14, 16]
-        hello-world: [ubuntu-latest, windows-latest]
+        versi-nodejs: [12, 14, 16]
+        sistem-operasi: [ubuntu-latest, windows-latest]
         include:
-          - v: 22
-            hello-world: ubuntu-latest
+          - versi-nodejs: 22
+            sistem-operasi: ubuntu-latest
         exclude:
-          - v: 12
-            hello-world: windows-latest
-    runs-on: ${{matrix.hello-world}}
+          - versi-nodejs: 12
+            sistem-operasi: windows-latest
     steps:
       - name: Get code
         uses: actions/checkout@v4
       - name: Install nodejs
         uses: actions/setup-node@v4
         with:
-          node-version: ${{matrix.v}}
+          node-version: ${{matrix.versi-nodejs}}
       - name: Install dependencies
         run: npm ci
       - name: Build project
