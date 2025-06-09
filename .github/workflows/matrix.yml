@@ -4,8 +4,8 @@ on: push
 
 jobs:
   build:
-    runs-on: ${{matrix.sistem-operasi}}
     continue-on-error: true
+
     strategy:
       matrix:
         versi-nodejs: [12, 14, 16]
@@ -16,13 +16,16 @@ jobs:
         exclude:
           - versi-nodejs: 12
             sistem-operasi: windows-latest
+
+    runs-on: ${{ matrix.sistem-operasi }}
+
     steps:
       - name: Get code
         uses: actions/checkout@v4
       - name: Install nodejs
         uses: actions/setup-node@v4
         with:
-          node-version: ${{matrix.versi-nodejs}}
+          node-version: ${{ matrix.versi-nodejs }}
       - name: Install dependencies
         run: npm ci
       - name: Build project
