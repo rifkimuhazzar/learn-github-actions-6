@@ -9,27 +9,27 @@ on:
         default: dist
         type: string
     # secrets:
-    #   nama-secret:
+    #   nama-rahasia:
     #     required: false
     outputs:
       nama-hasil:
         description: The result of the deployment operation
-        value: ${{ jobs.deploy-in-reusable.outputs.hasil-set-result-output }}
+        value: ${{ jobs.deploy.outputs.nama-hasil }}
 
 jobs:
-  deploy-in-reusable:
+  deploy:
     outputs:
-      hasil-set-result-output: ${{ steps.set-result-output.outputs.step-result }}
+      nama-hasil: ${{ steps.set-result-output.outputs.result }}
     runs-on: ubuntu-latest
     steps:
       - name: Download artifact
         uses: actions/download-artifact@v4
         with:
-          name: ${{  inputs.nama-artefak  }}
+          name: ${{ inputs.nama-artefak }}
       - name: List files
         run: ls -la
       - name: Output information
         run: echo "Deploying and Updating..."
       - name: Set result output
         id: set-result-output
-        run: echo "step-result=success" >> $GITHUB_OUTPUT
+        run: echo "result=success" >> $GITHUB_OUTPUT
