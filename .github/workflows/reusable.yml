@@ -12,14 +12,14 @@ on:
     #   nama-rahasia:
     #     required: false
     outputs:
-      nama-hasil:
+      nama-hasil-workflow:
         description: The result of the deployment operation
-        value: ${{ jobs.deploy.outputs.nama-hasil }}
+        value: ${{ jobs.deploy.outputs.nama-hasil-deploy }}
 
 jobs:
   deploy:
     outputs:
-      nama-hasil: ${{ steps.set-result-output.outputs.result }}
+      nama-hasil-deploy: ${{ steps.set-result-output.outputs.result }}
     runs-on: ubuntu-latest
     steps:
       - name: Download artifact
