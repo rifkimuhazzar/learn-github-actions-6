@@ -39,7 +39,7 @@ jobs:
         run: npm ci
       - name: Test code
         continue-on-error: true
-        id: test-code
+        # id: test-code
         run: npm run test
       - name: Upload test report
         uses: actions/upload-artifact@v4
@@ -63,7 +63,7 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
       - name: Build website
-        id: build-website
+        # id: build-website
         run: npm run build
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
@@ -80,7 +80,7 @@ jobs:
         with:
           name: dist-files
       - name: Output contents
-        run: ls
+        run: ls -la
       - name: Deploy
         run: echo "Deploying..."
 
@@ -92,4 +92,4 @@ jobs:
       - name: Output information
         run: |
           echo "Something went wrong"
-          echo "${{ toJSON(github) }}"
+          echo '${{ toJSON(github) }}'
